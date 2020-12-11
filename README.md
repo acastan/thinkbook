@@ -87,7 +87,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
  
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. Hotmail: la clau BitLocker quan xifrem un volum es mou al compte de Hotmail, i es pot recuperar d'allà a l'enllaç
+ 1. Hotmail: la clau BitLocker quan xifrem un volum es mou al compte de Hotmail, i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey>
  
     En aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
  
@@ -102,6 +102,12 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
     <https://www.bleepingcomputer.com/news/security/cold-boot-attack-steals-passwords-in-under-two-minutes/>
     
     <https://www.youtube.com/watch?v=oWDpP8ThGP8>
+    
+    Per crear l'usb d'arrencada consultar <https://www.rmprepusb.com/tutorials/124>
+    
+    L'espray congelador es pot comprar a botigues d'electrònica o per Internet:
+    
+    <https://www.google.com/search?q=freeze+spray+electronic>
  
  4. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat tot i que econòmic, i ser una mica manetes de l'electrònica.
  
@@ -110,6 +116,10 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
     <https://www.youtube.com/watch?v=-Fj3SeZww3M>
 
  5. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
+ 
+    <https://github.com/e-ago/bitcracker>
+    
+    Aquest atac és fàcil i pot motivar els estudiants si el faig a un equip amb targetes gràfiques nVidia amb CUDA.
 
 
 
