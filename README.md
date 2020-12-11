@@ -24,7 +24,7 @@ Què volem fer amb els alumnes? Pràctiques de SI forense sobre un cas real, que
   
   * Com instal.lar un nou sistema malgrat les proteccions i després restaurar l'original.
  
- Pregunta: és legal el que vull fer?
+ Pregunta: **és legal el que vull fer?**
 
 
 
@@ -35,6 +35,8 @@ Equip: Lenovo ThinkBook 14 IIL Intel Core i3-1005G1/8GB/256GB SSD/14"
 Serial: LR0E2Q4P
 
 Model: sembla que 20SL00D3SP però a la pàgina de suport he trobat que és 20SLS0S700
+
+TPM: 2.0
 
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
@@ -47,7 +49,7 @@ Manual del hardware per muntatge / desmuntatge:
 
 
 
-## Contrasenya BIOS / UEFI
+## Atacs a la contrasenya BIOS / UEFI
 
  1. Provar contrasenyes típiques: password, passw0rd, p4ssw0rd, 12345678, 11111111, etc. De quina longitud pot ser la contrasenya?
  
@@ -59,44 +61,62 @@ Manual del hardware per muntatge / desmuntatge:
  
     El fitxer de la BIOS a descarregar està a https://download.lenovo.com/consumer/mobiles/djcn22ww.exe
     
-    Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algún paràmetre de la BIOS del TPM.
+    Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algún paràmetre de la BIOS del TPM:
+    
+    <https://support.lenovo.com/us/en/solutions/ht506425>
  
  5. Quin atac d'enginyeria social faries servir per que el tècnic que fa elmanteniment et proporcioni la contrasenya?
  
 
 
-## BitLocker
+## Atacs a la contrasenya BitLocker
 
 Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau.
 
 ... i tenim accés al hardware ...
 
-Primer fes una mica de recerca de com funciona BitLocker i de què és el TPM.
+Primer fes una mica de recerca de com funciona [BitLocker](https://en.wikipedia.org/wiki/BitLocker) i de què és el [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
+
+  <https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview>
+  
+  <https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker>
 
 Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya es mourà dels xips de l'equip (TPM) a memia RAM per poderdesxifrar el volum.
 
+ 0. Podem obtenir una mica d'informació de les metadades de BitLocker, per exemple amb la comanda: `dislocker-metadata`
+ 
+    <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
  1. Hotmail: la clau BitLocker quan xifrem un volum es mou al compte de Hotmail, i es pot recuperar d'allà a l'enllaç
  
-    No funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+    En aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
  
- 2  Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
+ 2. Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
  
  3. Atac Cold Boot: anàlisi forense de la RAM d'un equip a la recerca de contrasenyes.  Molt senzill però espectacular!!!!  Els alumnes fliparan.
+ 
+    <https://citp.princeton.edu/our-work/memory/code/>
+    
+    <https://en.wikipedia.org/wiki/Cold_boot_attack>
+    
+    <https://www.bleepingcomputer.com/news/security/cold-boot-attack-steals-passwords-in-under-two-minutes/>
+    
+    <https://www.youtube.com/watch?v=oWDpP8ThGP8>
  
  4. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat tot i que econòmic, i ser una mica manetes de l'electrònica.
 
  5. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
- 
- 
- 
- 
- * <https://support.lenovo.com/us/en/solutions/ht506425>
- 
- * <https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker>
- 
- * <https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview>
- 
- * <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
- 
- * <https://www.linuxjournal.com/magazine/cold-boot-attack-tools-linux>
+
+
+
+## Atacs per aconseguir contrasenya Administrador
+
+Work in progress
+
+
+
+## Cambiar / restaurar S.O. malgrat proteccions
+
+Work in progress
+
+Amb el disc dur xifrat (BitLocker), necessitarem clonar per sectors, no per fitxers -> `dd`
