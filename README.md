@@ -39,10 +39,10 @@ Model: sembla que 20SL00D3SP però a la pàgina de suport he trobat que és 20SL
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
 
-Pàgina de suport del producte per descàrregues (noves BIOS, etc.):
+Pàgina de suport del producte per descàrregues (noves BIOS, etc.):  
 <https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkbook-series/thinkbook-14-iil/20sl/20sls0s700/lr0e2q4p>
 
-Manual del hardware per muntatge / desmuntatge:
+Manual del hardware per muntatge / desmuntatge:  
 <https://download.lenovo.com/consumer/mobiles_pub/thinkbook14_15_hmm_20191106.pdf>
 
 
@@ -53,7 +53,7 @@ Manual del hardware per muntatge / desmuntatge:
  
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrassenya: sembla que no
  
- 3. És un portàtil -> La contrasenya no s'hauria de recuperar treient bateria i pilas. Estarà gravada a una EEPROM.
+ 3. És un portàtil -> La contrasenya no s'hauria d'esborrar treient bateria i pilas. Estarà gravada a una EEPROM.
  
  4. És un portàtil de marca -> La contrasenya no s'hauria d'esborrar descarregant una nova BIOS/UEFI i gravant-la.
  
@@ -67,6 +67,30 @@ Manual del hardware per muntatge / desmuntatge:
 
 ## BitLocker
 
+Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau.
+
+... i tenim accés al hardware ...
+
+Primer fes una mica de recerca de com funciona BitLocker i de què és el TPM.
+
+Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya es mourà dels xips de l'equip (TPM) a memia RAM per poderdesxifrar el volum.
+
+
+ 1. Hotmail: la clau BitLocker quan xifrem un volum es mou al compte de Hotmail, i es pot recuperar d'allà a l'enllaç
+ 
+    No funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+ 
+ 2  Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
+ 
+ 3. Atac Cold Boot: anàlisi forense de la RAM d'un equip a la recerca de contrasenyes.  Molt senzill però espectacular!!!!  Els alumnes fliparan.
+ 
+ 4. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat tot i que econòmic, i ser una mica manetes de l'electrònica.
+
+ 5. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
+ 
+ 
+ 
+ 
  * <https://support.lenovo.com/us/en/solutions/ht506425>
  
  * <https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-bitlocker>
