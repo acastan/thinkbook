@@ -1,3 +1,4 @@
+
 # Pràctiques de SI amb el Thinkbook
 
 Propostes de treball amb els alumnes al mòdul de Seguretat Informàtica amb els nous portàtils que arriben al centre.
@@ -37,6 +38,9 @@ Serial: LR0E2Q4P
 Model: sembla que 20SL00D3SP però a la pàgina de suport he trobat que és 20SLS0S700
 
 TPM: 2.0
+
+PDF amb les especificacions del model ThinkBook 14 IIL:
+<https://psref.lenovo.com/syspool/Sys/PDF/ThinkBook/ThinkBook_14_IIL/ThinkBook_14_IIL_Spec.PDF>
 
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
