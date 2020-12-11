@@ -24,7 +24,7 @@ Què volem fer amb els alumnes? Pràctiques de SI forense sobre un cas real, que
   
   * Com instal.lar un nou sistema malgrat les proteccions i després restaurar l'original.
  
- Pregunta: **és legal el que vull fer?**
+ Pregunta: **és legal el que vull fer?** A veure que ens fan signar quan ens lliurin el portàtil.
 
 
 
@@ -104,12 +104,24 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
     <https://www.youtube.com/watch?v=oWDpP8ThGP8>
  
  4. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat tot i que econòmic, i ser una mica manetes de l'electrònica.
+ 
+    <https://pulsesecurity.co.nz/articles/TPM-sniffing>
+    
+    <https://www.youtube.com/watch?v=-Fj3SeZww3M>
 
  5. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
 
 
 
-## Atacs per aconseguir contrasenya Administrador
+## Atacs per aconseguir privilegis d'Administrador
+
+ 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que es guarda a c:/windows/system32/repair o quelcom semblant.
+ 
+ 2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya
+ 
+ 3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya 
+
+ 4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
 Work in progress
 
