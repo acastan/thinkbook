@@ -51,29 +51,37 @@ Manual del hardware per muntatge / desmuntatge:
 
 ## Atacs a la contrasenya BIOS / UEFI
 
- 1. Provar contrasenyes típiques: password, passw0rd, p4ssw0rd, 12345678, 11111111, etc. De quina longitud pot ser la contrasenya?
+ 1. De quina longitud pot ser la contrasenya? 8? 6?
 
- 2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya: sembla que no
+    Provar contrasenyes típiques de 8 caràcters: password, passw0rd, p4ssw0rd, 12345678, 11111111, etc.
+
+    Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
+
+ 2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya. A la web de Lenovo diuen que no.
 
  3. És un portàtil -> La contrasenya no s'hauria d'esborrar traient bateria i piles. Estarà gravada a una EEPROM.
 
- 4. És un portàtil de marca -> La contrasenya no s'hauria d'esborrar descarregant una nova BIOS/UEFI i gravant-la.
+ 4. És un portàtil de marca -> La contrasenya no s'hauria d'esborrar descarregant una nova BIOS/UEFI i flashejant-la.
 
     El fitxer de la BIOS a descarregar està a https://download.lenovo.com/consumer/mobiles/djcn22ww.exe
 
     Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algun paràmetre de la BIOS del TPM:
 
     <https://support.lenovo.com/us/en/solutions/ht506425>
+    
+ 5. Les EEPROM es poden resetejar fent un pont entre unes potes determinades, però cal tenir molt clar quines potes són, que depenen del model de xip EEPROM. Si ens equivoquem de potes, cremarem l'EEPROM.
 
- 5. Quin atac d'enginyeria social faries servir per que el tècnic que fa el manteniment et proporcioni la contrasenya?
+    Per exemple, veure aquest vídeo: <https://www.youtube.com/watch?v=nFW_F0ZDESk>
+
+    I aquests: <https://www.youtube.com/results?search_query=lenovo+eeprom>
+
+ 6. Quin atac d'enginyeria social faries servir per que el tècnic que fa el manteniment et proporcioni la contrasenya?
 
 
 
 ## Atacs a la contrasenya BitLocker
 
-Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau.
-
-... i tenim accés al hardware ...
+Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau ... i tenim accés al hardware !
 
 Primer fes una mica de recerca de com funciona [BitLocker](https://en.wikipedia.org/wiki/BitLocker) i de què és el [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
 
@@ -87,13 +95,21 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. Hotmail/Live/Outlook/Microsoft webmail: la clau BitLocker quan xifrem un volum es mou al compte de Microsoft, i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey>
+ 1. Hotmail/Live/Outlook/Microsoft webmail: la clau BitLocker quan xifrem un volum Windows es mou al nostre compte de Microsoft, i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey>
 
-    En aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+    Però en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
 
- 2. Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
+ 2. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
 
- 3. Atac Cold Boot: anàlisi forense de la RAM d'un equip a la recerca de contrasenyes.  Molt senzill però espectacular!!!!  Els alumnes fliparan.
+    <https://github.com/e-ago/bitcracker>
+
+    Aquest atac és fàcil i pot motivar els estudiants si el faig a un equip amb targetes gràfiques nVidia amb CUDA.
+    
+    L'atac de contrasenya és viable, però crec que l'atac de força bruta no ho és per que l'espai de claus és massa gran, i tardaríem anys en trobar-la.
+
+ 3. Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
+
+ 4. Atac Cold Boot: anàlisi forense de la RAM d'un equip a la recerca de contrasenyes.  Molt senzill però espectacular!!!!  Els alumnes fliparan.
 
     <https://citp.princeton.edu/our-work/memory/code/>
 
@@ -105,27 +121,21 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     Per crear l'usb d'arrencada consultar <https://www.rmprepusb.com/tutorials/124>
 
-    L'espray congelador es pot comprar a botigues d'electrònica o per Internet:
+    L'esprai congelador es pot comprar a botigues d'electrònica o per Internet:
 
     <https://www.google.com/search?q=freeze+spray+electronic>
 
- 4. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat tot i que econòmic, i ser una mica manetes de l'electrònica.
+ 5. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat, tot i que econòmic, i ser una mica manetes de l'electrònica.
 
     <https://pulsesecurity.co.nz/articles/TPM-sniffing>
 
     <https://www.youtube.com/watch?v=-Fj3SeZww3M>
 
- 5. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
-
-    <https://github.com/e-ago/bitcracker>
-
-    Aquest atac és fàcil i pot motivar els estudiants si el faig a un equip amb targetes gràfiques nVidia amb CUDA.
-
 
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que es guarda a c:/windows/system32/config o quelcom semblant.
+ 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya
 
@@ -133,12 +143,35 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
+ 5. Explorar les polítiques de seguretat no et donarà accés d'administrador, però és interessant:
+
+    executar 'gpedit.msc' -> Configuració d'equip -> Configuració de seguretat -> Polítiques de control d'aplicacions -> AppLocker -> explora i esborra les regles -> a continuació executar 'gpupdate /force'
+
 Work in progress
 
 
 
 ## Canviar / restaurar S.O. malgrat proteccions
 
-Work in progress
+Avís: Amb el disc dur xifrat (BitLocker), necessitarem clonar el Windows per sectors, no per fitxers -> `dd`
 
-Amb el disc dur xifrat (BitLocker), necessitarem clonar per sectors, no per fitxers -> `dd`
+Avís: Sembla que el trackpad només funciona amb nuclis de Linux prou nous, del 5.6 cap amunt.
+
+Avís: El nucli de Linux ha d'estar signat per a que SecureBoot el deixi arrencar.
+
+Avís: El sistema operatiu ve a una unitat NVMe, però l'equip té espai per posar un altre disc dur SATA.
+
+Avís: tecla F12 deixa escollir medi d'arrencada, si la BIOS està configurada per permetre-ho.
+
+ 1. Sempre es pot treure el disc NVMe de l'equip, posar-lo en un altre equip amb UEFI i SecureBoot, gravar el sistema que volem, i retornar-lo a l'equip original.
+
+ 2. Sembla que pot funcionar escollir al panell de configuració de Windows que utilitzi un usb com a mitjà de recuperació, i a continuació fer apagades "a la brava" per forçar l'arrencada des d'usb.
+
+ 3. També podem treure les bateries durant un minut per resetejar les opcions de la BIOS. Per exemple:
+
+    <https://www.youtube.com/watch?v=76I2Ec9K7lw>
+
+
+
+## Altres
+
