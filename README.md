@@ -2,7 +2,7 @@
 
 Propostes de treball amb els alumnes al mòdul de Seguretat Informàtica amb els nous portàtils que arriben al centre.
 
-Son dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
+Són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
 Aquests ordinadors arribaran al nostre centre el 14/12/2020 amb:
 
@@ -143,11 +143,9 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
- 5. Explorar les polítiques de seguretat no et donarà accés d'administrador, però és interessant:
+ 5. Explorar les polítiques de seguretat no ens donarà accés d'administrador, però és interessant veure què no ens deixen fer:
 
     executar 'gpedit.msc' -> Configuració d'equip -> Configuració de seguretat -> Polítiques de control d'aplicacions -> AppLocker -> explora i esborra les regles -> a continuació executar 'gpupdate /force'
-
-Work in progress
 
 
 
@@ -175,3 +173,4 @@ Avís: tecla F12 deixa escollir medi d'arrencada, si la BIOS està configurada p
 
 ## Altres
 
+Work in progress
