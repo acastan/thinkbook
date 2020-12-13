@@ -173,4 +173,8 @@ Avís: tecla F12 deixa escollir medi d'arrencada, si la BIOS està configurada p
 
 ## Altres
 
+Una mica de pensament lateral: quins arxius van usar i després esborrar abans de distribuir la imatge? Hi ha encara informació esborrada a la unitat del compte que es va fer servir per xifrar el disc dur? -> Podem emprar un recuperador d'arxius per veure tot el que s'ha esborrat al disc dur. Podem fer un anàlisi forense de la unitat. 
+
+Quan em donin el PC, abans d'arrencar el Windows cal fer una còpia amb `dd` de tot el disc dur.
+
 Work in progress
