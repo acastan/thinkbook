@@ -142,9 +142,9 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
 
- 2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya
+ 2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya. Però no es pot amb BitLocker actiu.
 
- 3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya 
+ 3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya. Però no es pot amb BitLocker actiu.
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
