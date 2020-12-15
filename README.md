@@ -60,7 +60,7 @@ Posaran documentació de Xtec aquí:
 
     Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
     
-    Finalment la contrasenya és de 12 caràcters
+    Finalment la contrasenya és de 12 caràcters (-ja és coneguda i està circulant per la xarxa, perquè a algún centre els tècnics que venien a repartir els portàtils en un moment de cansanci la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No era cap contrasenya típica, sino una paraula de 8 caràcters on han sustituït vocals per números seguida de 4 números més al final.
 
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya. A la web de Lenovo diuen que no.
 
