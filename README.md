@@ -24,7 +24,7 @@ Què volem fer amb els alumnes? Pràctiques de SI forense sobre un cas real, que
 
   * Com instal·lar un nou sistema malgrat les proteccions i després restaurar l'original.
 
-Pregunta: **és legal el que vull fer?** A veure que ens fan signar quan ens lliurin el portàtil.
+Pregunta: **és legal el que vull fer?** No m'han fet signar cap full ni m'han donat cap instrucció del que podem i no podem fer.
 
 
 
@@ -47,6 +47,9 @@ Pàgina de suport del producte per descàrregues (noves BIOS, etc.):
 Manual del hardware per muntatge / desmuntatge:  
 <https://download.lenovo.com/consumer/mobiles_pub/thinkbook14_15_hmm_20191106.pdf>
 
+Posaran documentació de Xtec aquí:  
+<https://projectes.xtec.cat/edc/documentacio/>
+
 
 
 ## Atacs a la contrasenya BIOS / UEFI
@@ -56,6 +59,8 @@ Manual del hardware per muntatge / desmuntatge:
     Provar contrasenyes típiques de 8 caràcters: password, passw0rd, p4ssw0rd, 12345678, 11111111, etc.
 
     Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
+    
+    Finalment la contrasenya és de 12 caràcters
 
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya. A la web de Lenovo diuen que no.
 
