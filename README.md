@@ -1,4 +1,4 @@
-# Pràctiques de Seguretat Iformàtica amb el Thinkbook
+# Pràctiques de Seguretat Informàtica amb el Thinkbook
 
 Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben als instituts. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
@@ -61,11 +61,11 @@ Posaran documentació de Xtec aquí:
     Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algun centre els tècnics que venien a repartir els portàtils en un moment de cansament o aburriment la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
 
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya.
- 
+
     Solució: A la web de Lenovo diuen que no.
 
  3. Es pot esborrar la contrasenya de la BIOS traient les bateries, com a una torre?
- 
+
     Solució: És un portàtil i la contrasenya NO s'hauria d'esborrar traient bateria i piles, ja que als portàtils està gravada a una memòria externa anomenada EEPROM que no requereix alimentació.
 
  4. Es pot esborrar la contrasenya de la BIOS descarregant una nova BIOS/UEFI i flashejant-la?
@@ -75,7 +75,7 @@ Posaran documentació de Xtec aquí:
     Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algun paràmetre de la BIOS del TPM: <https://support.lenovo.com/us/en/solutions/ht506425>
 
     Solució: Ho ha provat una altre escola i diuen que no. En un portàtil de marca la contrasenya no s'hauria d'esborrar amb aquest mètode.
-    
+
  5. Les EEPROM es poden resetejar fent un pont entre unes potes determinades, però cal tenir molt clar quines potes són, que depenen del model de xip EEPROM. Si ens equivoquem de potes, cremarem l'EEPROM.
 
     Per exemple, veure aquest vídeo: <https://www.youtube.com/watch?v=nFW_F0ZDESk>
@@ -89,9 +89,9 @@ Posaran documentació de Xtec aquí:
 Conclusions que haurien de treure els alumnes:
 
   * Per contrasenyes a la BIOS, no són viables els atacs de força bruta.
-  
+
   * En els portàtils no serveixen les mateixes tècniques que a les torres. La contrasenya no s'esborra traient la bateria ni amb botó de reset.
-  
+
   * En el cas d'anàlisi forense, no necessitem esbrinar o esborrar la contrasenya de la BIOS, ja que podem obrir l'equip i extreure el disc dur per a anàlisi.
 
 
@@ -109,19 +109,19 @@ Primer fes una mica de recerca de com funciona [BitLocker](https://en.wikipedia.
 Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya es mourà dels xips de l'equip (TPM) a memòria RAM per poder desxifrar el volum.
 
  0. Amb quines eines podem obtenir una mica d'informació de les metadades de BitLocker?
- 
+
     Solució: Hi ha moltes. Per exemple amb la comanda: `dislocker-metadata`
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
  1. La clau BitLocker quan xifrem un volum Windows es mou al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
- 
+
     Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
 
  2. És possible un atac de força bruta i de contrasenya sobre el volum?
- 
+
     Solució: L'atac de contrasenya és viable, però crec que l'atac de força bruta no ho és per que l'espai de claus és massa gran, i tardaríem anys en trobar-la.
-    
+
     Una eina pot ser <https://github.com/e-ago/bitcracker>
 
     Aquest atac és fàcil i pot motivar els estudiants si es fa amb un equip amb targetes gràfiques nVidia amb CUDA.
@@ -129,11 +129,11 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
     Si trobem la contrasenya provar, podem mirar si també és la de la BIOS.
 
  3. És possible buscar contrasenyes als fitxers de paginació i d'hibernació?
- 
+
     Solució: seria interessant, però com accedim a aquest fitxers? De moment, si arrenquem amb el disc dur de l'equip no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat.
 
  4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
- 
+
     Molt senzill però espectacular!!!!  Els alumnes fliparan.
 
     <https://citp.princeton.edu/our-work/memory/code/>
@@ -149,7 +149,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
     L'esprai congelador es pot comprar a botigues d'electrònica o per Internet: <https://www.google.com/search?q=freeze+spray+electronic>
 
  5. És possible esnifar la clau del TPM?
- 
+
     Cal comprar hardware especialitzat, tot i que econòmic, i ser una mica manetes de l'electrònica.
 
     <https://pulsesecurity.co.nz/articles/TPM-sniffing>
@@ -165,16 +165,16 @@ Conclusions que haurien de treure els alumnes:
 ## Atacs per aconseguir privilegis d'Administrador
 
  1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
- 
+
     Solució: En el nostre cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya.
  
-    Solució: En el nsotre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
+    Solució: En el nostre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
  3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya.
 
-    Solució: En el nsotre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
+    Solució: En el nostre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
