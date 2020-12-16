@@ -10,7 +10,7 @@ Aquests ordinadors arriben al nostre centre el 14/12/2020 amb:
 
   * Disc dur xifrat amb BitLocker.
 
-  * Els privilegis de l'usuari que ens donen no són administratius. Impossibilitat d'instal·lar i executar segons quin programari.
+  * Els privilegis de l'usuari que ens donen no són administratius, impossibilitant d'instal·lar i executar segons quin programari.
 
 Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
@@ -66,7 +66,7 @@ Posaran documentació de Xtec aquí:
 
  3. Es pot esborrar la contrasenya de la BIOS traient les bateries, com a una torre?
  
-    Solució? És un portàtil i la contrasenya NO s'hauria d'esborrar traient bateria i piles, ja que als portàtils està gravada a una memòria externa anomenada EEPROM que no requereix alimentació.
+    Solució: És un portàtil i la contrasenya NO s'hauria d'esborrar traient bateria i piles, ja que als portàtils està gravada a una memòria externa anomenada EEPROM que no requereix alimentació.
 
  4. Es pot esborrar la contrasenya de la BIOS descarregant una nova BIOS/UEFI i flashejant-la?
 
@@ -98,7 +98,7 @@ Conclusions que haurien de treure els alumnes:
 
 ## Atacs a la contrasenya BitLocker
 
-Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau ... i tenim accés al hardware !
+Es tracta de la versió automàtica de BitLocker: no requereix una contrasenya per part de l'usuari, ni un usb amb una clau ... i a més tenim accés al hardware !
 
 Primer fes una mica de recerca de com funciona [BitLocker](https://en.wikipedia.org/wiki/BitLocker) i de què és el [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
 
@@ -108,13 +108,15 @@ Primer fes una mica de recerca de com funciona [BitLocker](https://en.wikipedia.
 
 Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya es mourà dels xips de l'equip (TPM) a memòria RAM per poder desxifrar el volum.
 
- 0. Podem obtenir una mica d'informació de les metadades de BitLocker, per exemple amb la comanda: `dislocker-metadata`
+ 0. Amb quines eines podem obtenir una mica d'informació de les metadades de BitLocker?
+ 
+    Solució: Hi ha moltes. Per exemple amb la comanda: `dislocker-metadata`
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. Hotmail/Live/Outlook/Microsoft webmail: la clau BitLocker quan xifrem un volum Windows es mou al nostre compte de Microsoft, i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey>
-
-    Però en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+ 1. La clau BitLocker quan xifrem un volum Windows es mou al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail.La podem recuperar?
+ 
+    Solució: Tot i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
 
  2. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
 
