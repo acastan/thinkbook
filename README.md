@@ -2,7 +2,7 @@
 
 Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben al centre. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
-Aquests ordinadors arriven al nostre centre el 14/12/2020 amb:
+Aquests ordinadors arriben al nostre centre el 14/12/2020 amb:
 
   * BIOS/UEFI configurada per no arrencar des de dispositius externs.
 
@@ -10,7 +10,7 @@ Aquests ordinadors arriven al nostre centre el 14/12/2020 amb:
 
   * Disc dur xifrat amb BitLocker.
 
-  * Els privilegis de l'usuari que ens donen no són administratius. Imposibilitat d'instal.lar i executar segons quin programari.
+  * Els privilegis de l'usuari que ens donen no són administratius. Impossibilitat d'instal·lar i executar segons quin programari.
 
 Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
@@ -58,13 +58,13 @@ Posaran documentació de Xtec aquí:
 
     Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
     
-    Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algún centre els tècnics que venien a repartir els portàtils en un moment de cansanci la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàsssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
+    Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algun centre els tècnics que venien a repartir els portàtils en un moment de cansament o aburriment la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
 
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya.
  
     Solució: A la web de Lenovo diuen que no.
 
- 3. Es pot esborrar la contrasenya de la BIOS treient les bateries, com a una torre?
+ 3. Es pot esborrar la contrasenya de la BIOS traient les bateries, com a una torre?
  
     Solució? És un portàtil i la contrasenya NO s'hauria d'esborrar traient bateria i piles, ja que als portàtils està gravada a una memòria externa anomenada EEPROM que no requereix alimentació.
 
@@ -88,9 +88,9 @@ Posaran documentació de Xtec aquí:
 
 Conclusions que haurien de treure els alumnes:
 
-  * Per contrasenyes a la BIOS, no són posibles atacs de força bruta.
+  * Per contrasenyes a la BIOS, no són possibles atacs de força bruta.
   
-  * En els portàtils no serveixen les mateixes tècniques que a les torres. La contrasenya no s'esborra treient la bateria ni amb botó de reset.
+  * En els portàtils no serveixen les mateixes tècniques que a les torres. La contrasenya no s'esborra traient la bateria ni amb botó de reset.
   
   * En el cas d'anàlisi forense, no necessitem esbrinar o esborrar la contrasenya: podem obrir l'equip i extreure el disc dur per a anàlisi.
 
