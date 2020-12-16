@@ -1,6 +1,6 @@
-# Pràctiques de SI amb el Thinkbook
+# Pràctiques de Seguretat Iformàtica amb el Thinkbook
 
-Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben al centre. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
+Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben als instituts. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
 Aquests ordinadors arriben al nostre centre el 14/12/2020 amb:
 
@@ -22,7 +22,7 @@ Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-
 
   * Com instal·lar un nou sistema operatiu malgrat les proteccions i després restaurar l'original.
 
-Pregunta: **és legal el que vull fer?** A mi no m'han fet signar cap full ni m'han donat cap instrucció del que podem i no podem fer.
+Pregunta: **és legal el que vull fer?** A mi no m'han fet signar cap full ni m'han donat cap instrucció del que podem i no podem fer amb l'equip.
 
 
 
@@ -128,9 +128,13 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     Si trobem la contrasenya provar, podem mirar si també és la de la BIOS.
 
- 3. Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
+ 3. És possible buscar contrasenyes als fitxers de paginació i d'hibernació?
+ 
+    Solució: seria interessant, però com accedim a aquest fitxers? De moment, si arrenquem amb el disc dur de l'equip no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat.
 
- 4. Atac Cold Boot: anàlisi forense de la RAM d'un equip a la recerca de contrasenyes.  Molt senzill però espectacular!!!!  Els alumnes fliparan.
+ 4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
+ 
+    Molt senzill però espectacular!!!!  Els alumnes fliparan.
 
     <https://citp.princeton.edu/our-work/memory/code/>
 
@@ -142,25 +146,35 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     Per crear l'usb d'arrencada consultar <https://www.rmprepusb.com/tutorials/124>
 
-    L'esprai congelador es pot comprar a botigues d'electrònica o per Internet:
+    L'esprai congelador es pot comprar a botigues d'electrònica o per Internet: <https://www.google.com/search?q=freeze+spray+electronic>
 
-    <https://www.google.com/search?q=freeze+spray+electronic>
-
- 5. Atac de esnifar la clau del TPM. Cal comprar hardware especialitzat, tot i que econòmic, i ser una mica manetes de l'electrònica.
+ 5. És possible esnifar la clau del TPM?
+ 
+    Cal comprar hardware especialitzat, tot i que econòmic, i ser una mica manetes de l'electrònica.
 
     <https://pulsesecurity.co.nz/articles/TPM-sniffing>
 
     <https://www.youtube.com/watch?v=-Fj3SeZww3M>
 
+Conclusions que haurien de treure els alumnes:
+
+  * Només l'atac de Cold Boot sembla viable.
+
 
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config . En aquest cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
+ 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
+ 
+    Solució: En el nostre cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
 
- 2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya. Però no es pot amb BitLocker actiu.
+ 2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya.
+ 
+    Solució: En el nsotre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
- 3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya. Però no es pot amb BitLocker actiu.
+ 3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya.
+
+    Solució: En el nsotre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
@@ -194,8 +208,4 @@ Avís: tecla F12 deixa escollir medi d'arrencada, si la BIOS està configurada p
 
 ## Altres
 
-Una mica de pensament lateral: quins arxius van usar i després esborrar abans de distribuir la imatge? Hi ha a la unitat encara informació esborrada del compte que es va fer servir per xifrar el disc dur? -> Podem emprar un recuperador d'arxius per veure tot el que s'ha esborrat al disc dur. Podem fer un anàlisi forense de la unitat. 
-
-Quan em donin el PC, abans d'arrencar el Windows cal fer una còpia amb `dd` de tot el disc dur.
-
-Work in progress
+Una mica de pensament lateral: quins arxius van usar i després esborrar abans de distribuir la imatge? Hi ha a la unitat encara informació esborrada del compte que es va fer servir per xifrar el disc dur? -> Podem emprar un recuperador d'arxius per veure tot el que s'ha esborrat al disc dur.
