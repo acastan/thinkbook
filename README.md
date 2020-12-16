@@ -1,40 +1,38 @@
 # Pràctiques de SI amb el Thinkbook
 
-Propostes de treball amb els alumnes al mòdul de Seguretat Informàtica amb els nous portàtils que arriben al centre.
+Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben al centre. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
-Són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
+Aquests ordinadors arriven al nostre centre el 14/12/2020 amb:
 
-Aquests ordinadors arribaran al nostre centre el 14/12/2020 amb:
+  * BIOS/UEFI configurada per no arrencar des de dispositius externs.
 
-  * BIOS/UEFI configurada per no arrencar des de dispositius externs
+  * Contrasenya desconeguda a la BIOS/UEFI.
 
-  * Contrasenya desconeguda a la BIOS/UEFI
+  * Disc dur xifrat amb BitLocker.
 
-  * Disc dur xifrat amb BitLocker
+  * Els privilegis de l'usuari que ens donen no són administratius. Imposibilitat d'instal.lar i executar segons quin programari.
 
-  * Pot ser que els privilegis de l'usuari que ens donin no siguin administratius
-
-Què volem fer amb els alumnes? Pràctiques de SI forense sobre un cas real, que serà el portàtil que m'assignin.
+Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
   * Trobar la contrasenya de la BIOS/UEFI
 
   * Trobar la contrasenya de BitLocker
 
-  * Trobar la contrasenya d'Administrador.
+  * Escalar privilegis o trobar/eliminar la contrasenya d'Administrador.
 
-  * Com instal·lar un nou sistema malgrat les proteccions i després restaurar l'original.
+  * Com instal·lar un nou sistema operatiu malgrat les proteccions i després restaurar l'original.
 
-Pregunta: **és legal el que vull fer?** No m'han fet signar cap full ni m'han donat cap instrucció del que podem i no podem fer.
+Pregunta: **és legal el que vull fer?** A mi no m'han fet signar cap full ni m'han donat cap instrucció del que podem i no podem fer.
 
 
 
-## Informació dels equips
+## Recerca d'informació dels equips
 
 Equip: Lenovo ThinkBook 14 IIL Intel Core i3-1005G1/8GB/256GB SSD/14"
 
 Serial: LR0E2Q4P
 
-Model: sembla que 20SL00D3SP però a la pàgina de suport he trobat que és 20SLS0S700
+Model: sembla que pugui ser 20SL00D3SP però a la pàgina de suport he trobat que és 20SLS0S700
 
 TPM: 2.0
 
@@ -60,19 +58,23 @@ Posaran documentació de Xtec aquí:
 
     Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
     
-    Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algún centre els tècnics que venien a repartir els portàtils en un moment de cansanci la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No era cap contrasenya típica, sino una paraula de 8 caràcters on han sustituït vocals per números, seguida de 4 números més al final.
+    Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algún centre els tècnics que venien a repartir els portàtils en un moment de cansanci la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàsssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
 
- 2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya. A la web de Lenovo diuen que no.
+ 2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya.
+ 
+    Solució: A la web de Lenovo diuen que no.
 
- 3. És un portàtil -> La contrasenya no s'hauria d'esborrar traient bateria i piles. Estarà gravada a una EEPROM.
+ 3. Es pot esborrar la contrasenya de la BIOS treient les bateries, com a una torre?
+ 
+    Solució? És un portàtil i la contrasenya NO s'hauria d'esborrar traient bateria i piles, ja que als portàtils està gravada a una memòria externa anomenada EEPROM que no requereix alimentació.
 
- 4. És un portàtil de marca -> La contrasenya no s'hauria d'esborrar descarregant una nova BIOS/UEFI i flashejant-la.
+ 4. Es pot esborrar la contrasenya de la BIOS descarregant una nova BIOS/UEFI i flashejant-la?
 
     El fitxer de la BIOS a descarregar està a https://download.lenovo.com/consumer/mobiles/djcn22ww.exe
 
-    Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algun paràmetre de la BIOS del TPM:
+    Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algun paràmetre de la BIOS del TPM: <https://support.lenovo.com/us/en/solutions/ht506425>
 
-    <https://support.lenovo.com/us/en/solutions/ht506425>
+    Solució: Ho ha provat una altre escola i diuen que no. És un portàtil de marca. La contrasenya no s'hauria d'esborrar.
     
  5. Les EEPROM es poden resetejar fent un pont entre unes potes determinades, però cal tenir molt clar quines potes són, que depenen del model de xip EEPROM. Si ens equivoquem de potes, cremarem l'EEPROM.
 
@@ -81,6 +83,16 @@ Posaran documentació de Xtec aquí:
     I aquests: <https://www.youtube.com/results?search_query=lenovo+eeprom>
 
  6. Quin atac d'enginyeria social faries servir per que el tècnic que fa el manteniment et proporcioni la contrasenya?
+ 
+    Pista: quins moments pot estar distret? quins moments té més feina? és bon moment l'hora en que vol plegar de la feina?
+
+Conclusions que haurien de treure els alumnes:
+
+  * Per contrasenyes a la BIOS, no són posibles atacs de força bruta.
+  
+  * En els portàtils no serveixen les mateixes tècniques que a les torres. La contrasenya no s'esborra treient la bateria ni amb botó de reset.
+  
+  * En el cas d'anàlisi forense, no necessitem esbrinar o esborrar la contrasenya: podem obrir l'equip i extreure el disc dur per a anàlisi.
 
 
 
