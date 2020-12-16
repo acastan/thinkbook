@@ -74,7 +74,7 @@ Posaran documentació de Xtec aquí:
 
     Gravar una nova BIOS podria fer que BitLocker es queixi, especialment si es reseteja algun paràmetre de la BIOS del TPM: <https://support.lenovo.com/us/en/solutions/ht506425>
 
-    Solució: Ho ha provat una altre escola i diuen que no. És un portàtil de marca. La contrasenya no s'hauria d'esborrar.
+    Solució: Ho ha provat una altre escola i diuen que no. En un portàtil de marca la contrasenya no s'hauria d'esborrar amb aquest mètode.
     
  5. Les EEPROM es poden resetejar fent un pont entre unes potes determinades, però cal tenir molt clar quines potes són, que depenen del model de xip EEPROM. Si ens equivoquem de potes, cremarem l'EEPROM.
 
@@ -88,11 +88,11 @@ Posaran documentació de Xtec aquí:
 
 Conclusions que haurien de treure els alumnes:
 
-  * Per contrasenyes a la BIOS, no són possibles atacs de força bruta.
+  * Per contrasenyes a la BIOS, no són viables els atacs de força bruta.
   
   * En els portàtils no serveixen les mateixes tècniques que a les torres. La contrasenya no s'esborra traient la bateria ni amb botó de reset.
   
-  * En el cas d'anàlisi forense, no necessitem esbrinar o esborrar la contrasenya: podem obrir l'equip i extreure el disc dur per a anàlisi.
+  * En el cas d'anàlisi forense, no necessitem esbrinar o esborrar la contrasenya de la BIOS, ja que podem obrir l'equip i extreure el disc dur per a anàlisi.
 
 
 
@@ -114,17 +114,19 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. La clau BitLocker quan xifrem un volum Windows es mou al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail.La podem recuperar?
+ 1. La clau BitLocker quan xifrem un volum Windows es mou al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
  
-    Solució: Tot i es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
 
- 2. Atac de força bruta i de contrasenya sobre el volum. Si trobo la contrasenya provar si també és la de la BIOS.
-
-    <https://github.com/e-ago/bitcracker>
-
-    Aquest atac és fàcil i pot motivar els estudiants si el faig a un equip amb targetes gràfiques nVidia amb CUDA.
+ 2. És possible un atac de força bruta i de contrasenya sobre el volum?
+ 
+    Solució: L'atac de contrasenya és viable, però crec que l'atac de força bruta no ho és per que l'espai de claus és massa gran, i tardaríem anys en trobar-la.
     
-    L'atac de contrasenya és viable, però crec que l'atac de força bruta no ho és per que l'espai de claus és massa gran, i tardaríem anys en trobar-la.
+    Una eina pot ser <https://github.com/e-ago/bitcracker>
+
+    Aquest atac és fàcil i pot motivar els estudiants si es fa amb un equip amb targetes gràfiques nVidia amb CUDA.
+
+    Si trobem la contrasenya provar, podem mirar si també és la de la BIOS.
 
  3. Forense: buscar contrasenyes als fitxers de paginació i d'hibernació.
 
@@ -154,7 +156,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
+ 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config . En aquest cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya. Però no es pot amb BitLocker actiu.
 
