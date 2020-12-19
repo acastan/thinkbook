@@ -48,6 +48,10 @@ Manual del hardware per muntatge / desmuntatge:
 Posaran documentació de Xtec aquí:  
 <https://projectes.xtec.cat/edc/documentacio/>
 
+Sistema operatiu: sembla que és un Windows 10 Pro Education:
+<https://en.wikipedia.org/wiki/Windows_10_editions#Comparison_chart>
+<https://support.microsoft.com/es-es/help/3181976/windows-10-editions-for-education-customers>
+
 
 
 ## Atacs a la contrasenya BIOS / UEFI
@@ -130,7 +134,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  3. És possible buscar contrasenyes als fitxers de paginació i d'hibernació?
 
-    Solució: seria interessant, però com accedim a aquest fitxers? De moment, si arrenquem amb el disc dur de l'equip no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat.
+    Solució: seria interessant, però com accedim a aquest fitxers? El fitxer de paginació ja existeix i el fitxer d'hivernació podem generar-lo posant l'equip en mode "hivernació". Però de moment si arrenquem amb el disc dur de l'equip potser no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat. Així que cal provar si tenim permisos i, si no tenim, cal veure al proper apartat com pujar privilegis.
 
  4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
 
@@ -158,13 +162,13 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
 Conclusions que haurien de treure els alumnes:
 
-  * Només l'atac de Cold Boot sembla viable.
+  * Només l'atac de Cold Boot sembla viable si no tenim privilegis.
 
 
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
+ 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si bé les contrasenyes es guarden al registre, Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
 
     Solució: En el nostre cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
 
