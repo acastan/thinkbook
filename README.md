@@ -168,9 +168,15 @@ Conclusions que haurien de treure els alumnes:
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Buscar contrasenya amb [l0phtcrack](https://www.l0phtcrack.com/). Si bé les contrasenyes es guarden al registre, Si no tenim permisos per llegir les contrasenyes del registre, sempre podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/system32/config .
+ 1. Els usuaris i contrasenyes es guarden al registre, concretament al fitxer c:/windows/system32/config/SAM, i si tenim privilegis podem fer una còpia amb:
+     
+        reg save HKLM\SAM c:\sam
+     
+    Després podem buscar còmodament les contrassenyes d'aquest fitxer amb [l0phtcrack](https://www.l0phtcrack.com/).
+    
+    Si no tenim permisos per llegir les contrasenyes del registre, de vegades podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/repair/SAM . Altrament, podem provar amb eines com [mimikatz](http://blog.gentilkiwi.com/mimikatz) amb els paràmetres `sekurlsa::logonpasswords`, [fgdump](http://swamp.foofus.net/fizzgig/fgdump/) , o [hashdump](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/) .
 
-    Solució: En el nostre cas, han tret els permisos de lectura dels usuaris no privilegiats sobre aquest directori.
+    Solució: Encara per probar. <https://en.wikipedia.org/wiki/Security_Account_Manager#Cryptanalysis>
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya.
  
