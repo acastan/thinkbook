@@ -118,7 +118,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. La clau BitLocker quan xifrem un volum Windows es mou al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
+ 1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
 
     Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
 
@@ -134,7 +134,10 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  3. És possible buscar contrasenyes als fitxers de paginació i d'hibernació?
 
-    Solució: seria interessant, però com accedim a aquest fitxers? El fitxer de paginació ja existeix i el fitxer d'hivernació podem generar-lo posant l'equip en mode "hivernació". Però de moment si arrenquem amb el disc dur de l'equip potser no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat. Així que cal provar si tenim permisos i, si no tenim, cal veure al proper apartat com pujar privilegis.
+    Solució: seria interessant, però com accedim a aquest fitxers? El fitxer de paginació ja existeix i el fitxer d'hivernació podem generar-lo posant l'equip en mode "hivernació". Però de moment si arrenquem amb el disc dur de l'equip potser no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat. Així que cal provar si tenim permisos i, si no tenim, cal _veure al proper apartat com pujar privilegis_.
+    
+    > On-the-fly encryption keys (OTFE keys) are the actual binary keys that are used by the system to encrypt and decrypt information during normal operations. The keys are stored in the system’s volatile memory at all times while the encrypted volume is mounted to facilitate read/write access to encrypted data.
+    > When the user puts their computer to sleep (as opposed to shutting it down), Windows default behavior is to save a copy of the device volatile memory on the computer’s hard drive so that the saved state could survive power cut off. The file that stores the content of the computer’s memory is called hibernation file. Windows stores hibernation files under the name “hiberfil.sys”. Hibernation files are encrypted; however, we were able to break this encryption.
 
  4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
 
@@ -169,9 +172,9 @@ Conclusions que haurien de treure els alumnes:
 ## Atacs per aconseguir privilegis d'Administrador
 
  1. Els usuaris i contrasenyes es guarden al registre, concretament al fitxer c:/windows/system32/config/SAM, i si tenim privilegis podem fer una còpia amb:
-     
+
         reg save HKLM\SAM c:\sam
-     
+
     Després podem buscar còmodament les contrassenyes d'aquest fitxer amb [l0phtcrack](https://www.l0phtcrack.com/).
     
     Si no tenim permisos per llegir les contrasenyes del registre, de vegades podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/repair/SAM . Altrament, podem provar amb eines com [mimikatz](http://blog.gentilkiwi.com/mimikatz) amb els paràmetres `sekurlsa::logonpasswords`, [fgdump](http://swamp.foofus.net/fizzgig/fgdump/) , o [hashdump](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/) .
@@ -179,7 +182,7 @@ Conclusions que haurien de treure els alumnes:
     Solució: Encara per probar. <https://en.wikipedia.org/wiki/Security_Account_Manager#Cryptanalysis>
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya.
- 
+
     Solució: En el nostre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
  3. Si s'ha aconseguit arrencar amb CD/USB es pot provar [chntpw](https://en.wikipedia.org/wiki/Chntpw) per canviar la contrasenya.
@@ -191,6 +194,8 @@ Conclusions que haurien de treure els alumnes:
  5. Explorar les polítiques de seguretat no ens donarà accés d'administrador, però és interessant veure què no ens deixen fer:
 
     executar 'gpedit.msc' -> Configuració d'equip -> Configuració de seguretat -> Polítiques de control d'aplicacions -> AppLocker -> explora i esborra les regles -> a continuació executar 'gpupdate /force'
+
+ 6. Comenten companys/es d'altres instituts que han escalat privilegis de la següent manera: apagar malament el Windows i a continuació arrencar amb F12 i escollir mode recuperació permet iniciar sessió amb un usuari local administrador. Per consolidar aquest privilegi llavors podem crear un nou usuari administrador per iniciar sessió amb ell en el reinici.
 
 
 
