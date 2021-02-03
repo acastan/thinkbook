@@ -36,6 +36,9 @@ Model: sembla que pugui ser 20SL00D3SP però a la pàgina de suport he trobat qu
 
 TPM: 2.0
 
+PDF amb les especificacions del model ThinkBook 14 IIL:
+<https://psref.lenovo.com/syspool/Sys/PDF/ThinkBook/ThinkBook_14_IIL/ThinkBook_14_IIL_Spec.PDF>
+
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
 
