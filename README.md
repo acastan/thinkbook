@@ -123,9 +123,9 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Hotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
+ 1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Microsoft webmail. La podem recuperar d'allà?
 
-    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <aka.ms/aadrecoverykey> , semblaria en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Amb aquesta clau ja es pot desblocar el volum des de Windows, o muntar-ho a Linux amb la utilitat [dislocker](https://www.linuxuprising.com/2019/04/how-to-mount-bitlocker-encrypted.html) i llavors fer canvis als comptes d'usuari amb la comanda [chntpw](https://www.top-password.com/knowledge/reset-windows-10-password-with-ubuntu.html)
+    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://aka.ms/aadrecoverykey/> , semblaria en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Amb aquesta clau ja es pot desblocar el volum des de Windows, o muntar-ho a Linux amb la utilitat [dislocker](https://www.linuxuprising.com/2019/04/how-to-mount-bitlocker-encrypted.html) i llavors fer canvis als comptes d'usuari amb la comanda [chntpw](https://www.top-password.com/knowledge/reset-windows-10-password-with-ubuntu.html)
 
     Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
 
