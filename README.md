@@ -12,6 +12,8 @@ Aquests ordinadors arriben al nostre centre el 14/12/2020 amb:
 
   * Els privilegis de l'usuari que ens donen no són administratius, impossibilitant d'instal·lar i executar segons quin programari.
 
+  * Autenticació per xarxa amb usuari *nom_xtec*@edu.gencat.cat i la contrasenya de l'ATRI.
+
 Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
   * Trobar la contrasenya de la BIOS/UEFI
@@ -36,11 +38,11 @@ Model: sembla que pugui ser 20SL00D3SP però a la pàgina de suport he trobat qu
 
 TPM: 2.0
 
-PDF amb les especificacions del model ThinkBook 14 IIL:
-<https://psref.lenovo.com/syspool/Sys/PDF/ThinkBook/ThinkBook_14_IIL/ThinkBook_14_IIL_Spec.PDF>
-
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
+
+Document amb les especificacions del model ThinkBook 14 IIL:
+<https://psref.lenovo.com/syspool/Sys/PDF/ThinkBook/ThinkBook_14_IIL/ThinkBook_14_IIL_Spec.PDF>
 
 Pàgina de suport del producte per descàrregues (noves BIOS, etc.):  
 <https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkbook-series/thinkbook-14-iil/20sl/20sls0s700/lr0e2q4p>
@@ -48,7 +50,7 @@ Pàgina de suport del producte per descàrregues (noves BIOS, etc.):
 Manual del hardware per muntatge / desmuntatge:  
 <https://download.lenovo.com/consumer/mobiles_pub/thinkbook14_15_hmm_20191106.pdf>
 
-Posaran documentació de Xtec aquí:  
+Posaran documentació de XTEC aquí:  
 <https://projectes.xtec.cat/edc/documentacio/>
 
 Sistema operatiu: sembla que és un Windows 10 Pro Education:
@@ -64,8 +66,8 @@ Sistema operatiu: sembla que és un Windows 10 Pro Education:
     Provar contrasenyes típiques de 8 caràcters: password, passw0rd, p4ssw0rd, 12345678, 11111111, etc.
 
     Provar contrasenyes típiques de 6 caràcters: passwd, 123456, 000000, admin0, admin1, etc.
-    
-    Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algun centre els tècnics que venien a repartir els portàtils en un moment de cansament o aburriment la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
+
+    Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algun centre els tècnics que venien a repartir els portàtils en un moment de cansament o avorriment la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
 
  2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya.
 
@@ -90,7 +92,7 @@ Sistema operatiu: sembla que és un Windows 10 Pro Education:
     I aquests: <https://www.youtube.com/results?search_query=lenovo+eeprom>
 
  6. Quin atac d'enginyeria social faries servir per que el tècnic que fa el manteniment et proporcioni la contrasenya?
- 
+
     Pista: quins moments pot estar distret? quins moments té més feina? és bon moment l'hora en que vol plegar de la feina?
 
 Conclusions que haurien de treure els alumnes:
@@ -121,9 +123,11 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     <http://manpages.ubuntu.com/manpages/bionic/man1/dislocker-metadata.1.html>
 
- 1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de MicrosoftHotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
+ 1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Hotmail/Live/Outlook/Microsoft webmail. La podem recuperar d'allà?
 
-    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://account.microsoft.com/devices/recoverykey> , en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres.
+    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <aka.ms/aadrecoverykey> , semblaria en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Amb aquesta clau ja es pot desblocar el volum des de Windows, o muntar-ho a Linux amb la utilitat [dislocker](https://www.linuxuprising.com/2019/04/how-to-mount-bitlocker-encrypted.html) i llavors fer canvis als comptes d'usuari amb la comanda [chntpw](https://www.top-password.com/knowledge/reset-windows-10-password-with-ubuntu.html)
+
+    Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
 
  2. És possible un atac de força bruta i de contrasenya sobre el volum?
 
@@ -133,18 +137,16 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
     Aquest atac és fàcil i pot motivar els estudiants si es fa amb un equip amb targetes gràfiques nVidia amb CUDA.
 
-    Si trobem la contrasenya provar, podem mirar si també és la de la BIOS.
-
  3. És possible buscar contrasenyes als fitxers de paginació i d'hibernació?
 
-    Solució: seria interessant, però com accedim a aquest fitxers? El fitxer de paginació ja existeix i el fitxer d'hivernació podem generar-lo posant l'equip en mode "hivernació". Però de moment si arrenquem amb el disc dur de l'equip potser no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat. Així que cal provar si tenim permisos i, si no tenim, cal _veure al proper apartat com pujar privilegis_.
-    
+    Solució: seria interessant, però com accedim a aquest fitxers? El fitxer de paginació ja existeix i el fitxer d'hibernació podem generar-lo posant l'equip en mode "hibernació". Però de moment si arrenquem amb el disc dur de l'equip potser no tenim privilegis, i si arrenquem amb un USB extern no tenim accés al contingut del disc perquè està xifrat. Així que cal provar si tenim permisos i, si no tenim, cal _veure al proper apartat com pujar privilegis_.
+
     > On-the-fly encryption keys (OTFE keys) are the actual binary keys that are used by the system to encrypt and decrypt information during normal operations. The keys are stored in the system’s volatile memory at all times while the encrypted volume is mounted to facilitate read/write access to encrypted data.
     > When the user puts their computer to sleep (as opposed to shutting it down), Windows default behavior is to save a copy of the device volatile memory on the computer’s hard drive so that the saved state could survive power cut off. The file that stores the content of the computer’s memory is called hibernation file. Windows stores hibernation files under the name “hiberfil.sys”. Hibernation files are encrypted; however, we were able to break this encryption.
 
  4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
 
-    Molt senzill però espectacular!!!!  Els alumnes fliparan.
+    Molt senzill però espectacular!!!!  Pat agradar molt als alumnes.
 
     <https://citp.princeton.edu/our-work/memory/code/>
 
@@ -174,15 +176,15 @@ Conclusions que haurien de treure els alumnes:
 
 ## Atacs per aconseguir privilegis d'Administrador
 
- 1. Els usuaris i contrasenyes es guarden al registre, concretament al fitxer c:/windows/system32/config/SAM, i si tenim privilegis podem fer una còpia amb:
+ 1. Els usuaris i contrasenyes es guarden al registre, concretament al fitxer c:\windows\system32\config\SAM, i si tenim privilegis podem fer una còpia amb:
 
         reg save HKLM\SAM c:\sam
 
-    Després podem buscar còmodament les contrassenyes d'aquest fitxer amb [l0phtcrack](https://www.l0phtcrack.com/).
+    Després podem buscar còmodament les contrasenyes d'aquest fitxer amb [l0phtcrack](https://www.l0phtcrack.com/).
     
-    Si no tenim permisos per llegir les contrasenyes del registre, de vegades podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:/windows/repair/SAM . Altrament, podem provar amb eines com [mimikatz](http://blog.gentilkiwi.com/mimikatz) amb els paràmetres `sekurlsa::logonpasswords`, [fgdump](http://swamp.foofus.net/fizzgig/fgdump/) , o [hashdump](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/) .
+    Si no tenim permisos per llegir les contrasenyes del registre, de vegades podem aconseguir una còpia de seguretat del fitxer SAM que Windows guarda a c:\windows\repair\SAM . Altrament, podem provar amb eines com [mimikatz](http://blog.gentilkiwi.com/mimikatz) amb els paràmetres `sekurlsa::logonpasswords`, [fgdump](http://swamp.foofus.net/fizzgig/fgdump/) , o [hashdump](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/) .
 
-    Solució: Encara per probar. <https://en.wikipedia.org/wiki/Security_Account_Manager#Cryptanalysis>
+    Solució: Encara per provar. <https://en.wikipedia.org/wiki/Security_Account_Manager#Cryptanalysis>
 
  2. Si s'ha aconseguit arrencar amb CD/USB es pot provar [ophcrack](https://ophcrack.sourceforge.io/) + RainbowTables per obtenir la contrasenya.
 
@@ -193,6 +195,31 @@ Conclusions que haurien de treure els alumnes:
     Solució: En el nostre cas no es pot accedir al contingut del disc dur amb BitLocker actiu.
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
+
+    Solució: He trobat aquesta manera d'accedir al Windows d'aquests equips sense privilegis i sense ser usuari. Cal senzillament apagar l'equip "malament" prement el notó de POWER OFF durant quatre segons. També podem prémer aquest botó quatre segons mentre Windows intenta arrencar. Llavors a la següent arrencada informarà de que "Tu PC no se inició correctamente" -> Opciones de reparación avanzadas -> Solucionar problemas -> opciones avanzadas -> Símbolo del sistema. Ara ja pots fer de tot per que la shell sembla que té privilegis de system.
+
+    Per exemple, he pogut copiar els fitxers SAM i SYSTEM del registre a un USB:
+
+        copy c:\windows\system32\config\SAM d:\
+        copy c:\windows\system32\config\SYSTEM d:\
+
+    I després a casa comprovar (veure punt 1 anterior) que existeix uns usuaris Administrador, Invitado i DefaultAccount sense contrasenya però inhabilitats, i un usuari defaultuser0 habilitat i sembla que sense contrasenya, però encara no he mirat els privilegis que té aquest últim usuari.
+
+    També podria emprar la shell per intentar crear comptes d'usuari amb la comanda `net user`, però no veig clar que en mode recuperació aquests canvis es facin efectius sobre el sistema, ja que en mode recuperació crec que treballem amb un registre de Windows auxiliar o temporal. Tanmateix podem usar la shell per fer "trapelleries" que després en mode d'arrencada normal ens permetin pujar pivilegis o saltar el login. 
+    
+    Per exemple, si des d'aquesta shell copies el fitxer de "cmd.exe" a alguna utilitat de les que es pot accedir des de la pantalla de login, tens una shell a la pantalla de login:
+
+        copy c:\windows\system32\osk.exe c:\windows\system32\osk.exe.bak
+        copy c:\windows\system32\cmd.exe c:\windows\system32\osk.exe
+
+    i llavors en la pantalla de login escollir que vols "on screen reader" i t'obre la shell. O també pots fer:
+
+        copy c:\windows\system32\utilman.exe c:\windows\system32\utilman.exe.bak
+        copy c:\windows\system32\cmd.exe c:\windows\system32\utilman.exe
+
+    i llavors en la pantalla de login escollir la icona d'opcions especials (la icona del mig de les tres icones de baix a la dreta) i t'obre la shell. I ara ja des d'aquesta shell pots crear un usuari:
+
+        net user *nom_usuari* *
 
  5. Explorar les polítiques de seguretat no ens donarà accés d'administrador, però és interessant veure què no ens deixen fer:
 
