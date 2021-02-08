@@ -2,7 +2,7 @@
 
 Propostes d'exercici d'anàlisi forense i hacking inspirat en els nous portàtils que arriben als instituts. Aquests portàtils són dotacions de centre per fer servir pel professorat del Departament d'Educació de la Generalitat de Catalunya.
 
-Aquests ordinadors arriben al nostre centre el 14/12/2020 amb:
+Aquests ordinadors arriben al meu centre el 14/12/2020 amb:
 
   * BIOS/UEFI configurada per no arrencar des de dispositius externs.
 
