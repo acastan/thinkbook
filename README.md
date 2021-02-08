@@ -41,7 +41,7 @@ TPM: 2.0
 Pàgina d'informació del producte:  
 <https://www.tiendalenovo.es/lenovo-thinkbook-14-iil-20sl00d3sp>
 
-Document amb les especificacions del model ThinkBook 14 IIL:
+Document amb les especificacions del model ThinkBook 14 IIL:  
 <https://psref.lenovo.com/syspool/Sys/PDF/ThinkBook/ThinkBook_14_IIL/ThinkBook_14_IIL_Spec.PDF>
 
 Pàgina de suport del producte per descàrregues (noves BIOS, etc.):  
@@ -53,7 +53,7 @@ Manual del hardware per muntatge / desmuntatge:
 Posaran documentació de XTEC aquí:  
 <https://projectes.xtec.cat/edc/documentacio/>
 
-Sistema operatiu: sembla que és un Windows 10 Pro Education:
+Sistema operatiu: sembla que és un Windows 10 Pro Education:  
 <https://en.wikipedia.org/wiki/Windows_10_editions#Comparison_chart>
 <https://support.microsoft.com/es-es/help/3181976/windows-10-editions-for-education-customers>
 
@@ -196,7 +196,7 @@ Conclusions que haurien de treure els alumnes:
 
  4. Com segur tenim accés com usuaris sense privilegis, podem intentar atacs d'escalada de privilegis a Windows.
 
-    Solució: He trobat aquesta manera d'accedir al Windows d'aquests equips sense privilegis i sense ser usuari. Cal senzillament apagar l'equip "malament" prement el notó de POWER OFF durant quatre segons. També podem prémer aquest botó quatre segons mentre Windows intenta arrencar. Llavors a la següent arrencada informarà de que "Tu PC no se inició correctamente" -> Opciones de reparación avanzadas -> Solucionar problemas -> opciones avanzadas -> Símbolo del sistema. Ara ja pots fer de tot per que la shell sembla que té privilegis de system.
+    Solució: He trobat aquesta manera d'accedir al Windows d'aquests equips sense privilegis i sense ser usuari. Cal senzillament apagar l'equip "malament" prement el botó de POWER OFF durant quatre segons. També podem prémer aquest botó quatre segons mentre Windows intenta arrencar. Llavors a la següent arrencada informarà de que "Tu PC no se inició correctamente" -> Opciones de reparación avanzadas -> Solucionar problemas -> opciones avanzadas -> Símbolo del sistema. Ara ja pots fer de tot per que la shell sembla que té privilegis de system.
 
     Per exemple, he pogut copiar els fitxers SAM i SYSTEM del registre a un USB:
 
@@ -217,15 +217,13 @@ Conclusions que haurien de treure els alumnes:
         copy c:\windows\system32\utilman.exe c:\windows\system32\utilman.exe.bak
         copy c:\windows\system32\cmd.exe c:\windows\system32\utilman.exe
 
-    i llavors en la pantalla de login escollir la icona d'opcions especials (la icona del mig de les tres icones de baix a la dreta) i t'obre la shell. I ara ja des d'aquesta shell pots crear un usuari:
+    i llavors en la pantalla de login escollir la icona d'opcions especials (la icona del mig de les tres icones de baix a la dreta) i t'obre la shell. I ara ja des d'aquesta shell amagada al login pots crear un usuari i accedir amb ell:
 
-        net user *nom_usuari* *
+        net user nom_usuari *
 
  5. Explorar les polítiques de seguretat no ens donarà accés d'administrador, però és interessant veure què no ens deixen fer:
 
     executar 'gpedit.msc' -> Configuració d'equip -> Configuració de seguretat -> Polítiques de control d'aplicacions -> AppLocker -> explora i esborra les regles -> a continuació executar 'gpupdate /force'
-
- 6. Comenten companys/es d'altres instituts que han escalat privilegis de la següent manera: apagar malament el Windows i a continuació arrencar amb F12 i escollir mode recuperació permet iniciar sessió amb un usuari local administrador. Per consolidar aquest privilegi llavors podem crear un nou usuari administrador per iniciar sessió amb ell en el reinici.
 
 
 
@@ -253,4 +251,4 @@ Avís: tecla F12 deixa escollir medi d'arrencada, si la BIOS està configurada p
 
 ## Altres
 
-Una mica de pensament lateral: quins arxius van usar i després esborrar abans de distribuir la imatge? Hi ha a la unitat encara informació esborrada del compte que es va fer servir per xifrar el disc dur? -> Podem emprar un recuperador d'arxius per veure tot el que s'ha esborrat al disc dur.
+Una mica de pensament lateral: pot ser interessant veure quins arxius van usar i després esborrar abans de distribuir la imatge. Podem emprar un recuperador d'arxius per veure tot el que s'ha esborrat al disc dur.
