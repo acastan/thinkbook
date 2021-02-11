@@ -205,7 +205,7 @@ Conclusions que haurien de treure els alumnes:
         copy c:\windows\system32\config\SAM d:\
         copy c:\windows\system32\config\SYSTEM d:\
 
-    I després a casa comprovar (veure punt 1 anterior) que existeix uns usuaris Administrador, Invitado i DefaultAccount sense contrasenya però inhabilitats, i un usuari defaultuser0 habilitat i sembla que sense contrasenya, però encara no he mirat els privilegis que té aquest últim usuari.
+    I després a casa comprovar (veure punt 1 anterior) que existeix uns usuaris Administrador, Invitado i DefaultAccount sense contrasenya però inhabilitats, i un usuari defaultuser0 habilitat i sembla que amb contrasenya, però encara no he mirat els privilegis que té aquest últim usuari.
 
     També podria emprar la shell per intentar crear comptes d'usuari amb la comanda `net user`, però no veig clar que en mode recuperació aquests canvis es facin efectius sobre el sistema, ja que en mode recuperació crec que treballem amb un registre de Windows auxiliar o temporal. Tanmateix podem usar la shell per fer "trapelleries" que després en mode d'arrencada normal ens permetin pujar pivilegis o saltar el login. 
     
