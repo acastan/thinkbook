@@ -126,8 +126,10 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
  1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Microsoft webmail. La podem recuperar d'allà?
 
     Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://aka.ms/aadrecoverykey/> , semblaria en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Amb aquesta clau ja es pot desblocar el volum des de Windows, o muntar-ho a Linux amb la utilitat [dislocker](https://www.linuxuprising.com/2019/04/how-to-mount-bitlocker-encrypted.html) i llavors fer canvis als comptes d'usuari amb la comanda [chntpw](https://www.top-password.com/knowledge/reset-windows-10-password-with-ubuntu.html)
-
+    
     Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
+
+    Incís: Ha funcionat per que en realitat el volum no estava xifrat inicialment. Quan ens van assignar el portàtil i vam fer login per primer cop va ser quan es va protegir el volum amb BitLocker, i la clau de BitLocker es va moure al nostre compte Microsoft. Això és important, per què vol dir que si arrenquem en mode de recuperació i restablim el sistema original, obtindrem de nou el sistema sense xifrar.
 
  2. És possible un atac de força bruta i de contrasenya sobre el volum?
 
@@ -220,6 +222,8 @@ Conclusions que haurien de treure els alumnes:
     i llavors en la pantalla de login escollir la icona d'opcions especials (la icona del mig de les tres icones de baix a la dreta) i t'obre la shell. I ara ja des d'aquesta shell amagada al login pots crear un usuari i accedir amb ell:
 
         net user nom_usuari *
+
+    Avís: si el mètode d'obrir una línia de comandes no funciona per que ens demana desprotegir el volum amb la clau de BitLocker i després un usuari administrador, podem solucionar-ho escollint "restaurar el sistema" dins el menú de recuperació, que retornarà el sistema al seu instant primigeni en que no haviem fet login per primer cop i el volum encara no s'havia protegit amb BitLocker.
 
  5. Explorar les polítiques de seguretat no ens donarà accés d'administrador, però és interessant veure què no ens deixen fer:
 
