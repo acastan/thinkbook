@@ -125,11 +125,21 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Microsoft webmail. La podem recuperar d'allà?
 
-    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://aka.ms/aadrecoverykey/> , semblaria en aquest cas no funcionarà per que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Amb aquesta clau ja es pot desblocar el volum des de Windows, o muntar-ho a Linux amb la utilitat [dislocker](https://www.linuxuprising.com/2019/04/how-to-mount-bitlocker-encrypted.html) i llavors fer canvis als comptes d'usuari amb la comanda [chntpw](https://www.top-password.com/knowledge/reset-windows-10-password-with-ubuntu.html)
-    
-    Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
+    Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://aka.ms/aadrecoverykey/> , semblaria en aquest cas no funcionarà per que pensem que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Ha funcionat per que en realitat el volum no estava xifrat inicialment. Quan ens van assignar el portàtil i vam fer login per primer cop va ser quan es va protegir el volum amb BitLocker, i la clau de BitLocker es va moure al nostre compte Microsoft. Això és important, per què vol dir que si arrenquem en mode de recuperació i restablim el sistema original, obtindrem de nou el sistema sense xifrar.
+        
+    Amb aquesta clau ja es pot desblocar el volum des de Windows si fossim administradors, o muntar-ho amb un LiveCD de Linux amb la utilitat `dislocker` i llavors fer canvis als comptes d'usuari amb la comanda `chntpw`:
 
-    Incís: Ha funcionat per que en realitat el volum no estava xifrat inicialment. Quan ens van assignar el portàtil i vam fer login per primer cop va ser quan es va protegir el volum amb BitLocker, i la clau de BitLocker es va moure al nostre compte Microsoft. Això és important, per què vol dir que si arrenquem en mode de recuperació i restablim el sistema original, obtindrem de nou el sistema sense xifrar.
+        sudo apt update
+        sudo apt install dislocker chntpw
+        sudo mkdir /media/bitlocker_aux
+        sudo mkdir /media/bitlocker_mount
+        sudo dislocker /dev/nvme0n1p3 --recovery-password=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX  -- /media/bitlocker_aux
+        sudo mount -o loop /media/bitlocker_aux/dislocker-file /media/bitlocker_mount
+        sudo cd /media/bitlocker_mount/Windows/System32/config
+        sudo chntpw -l SAM
+        sudo chntpw -u Administrador SAM
+
+    Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
 
  2. És possible un atac de força bruta i de contrasenya sobre el volum?
 
