@@ -14,7 +14,7 @@ Aquests ordinadors arriben al meu centre el 14/12/2020 amb:
 
   * Autenticació per xarxa amb usuari *nom_xtec*@edu.gencat.cat i la contrasenya de l'ATRI.
 
-  * [Microsoft Intune](https://docs.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune) que pot bloquejar Windows si fem canvis que no dessitja ("jailbreak").
+  * [Microsoft Intune](https://docs.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune), que pot bloquejar Windows si fem canvis no desitjats ("jailbreak").
 
 Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
@@ -128,8 +128,8 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
  1. La clau BitLocker quan xifrem un volum Windows es còpia al nostre compte de Microsoft webmail. La podem recuperar d'allà?
 
     Solució: Tot i que normalment es pot recuperar d'allà a l'enllaç <https://aka.ms/aadrecoverykey/> , semblaria en aquest cas no funcionarà per que pensem que qui va xifrar aquesta unitat no vam ser nosaltres. Tanmateix SÍ ha funcionat i es pot recuperar la clau BitLocker. Ha funcionat per que en realitat el volum no estava xifrat inicialment. Quan ens van assignar el portàtil i vam fer login per primer cop va ser quan es va protegir el volum amb BitLocker, i la clau de BitLocker es va moure al nostre compte Microsoft. Això és important, per què vol dir que si arrenquem en mode de recuperació i restablim el sistema original, obtindrem de nou el sistema sense xifrar.
-        
-    Amb aquesta clau ja es pot desblocar el volum des de Windows si fossim administradors, o muntar-ho amb un LiveCD de Linux amb la utilitat `dislocker` i llavors fer canvis als comptes d'usuari amb la comanda `chntpw`:
+
+    Amb aquesta clau ja podem desblocar el volum des de Windows si som administradors, o també muntar-ho amb un LiveCD de Linux amb la utilitat `dislocker` i llavors fer canvis als comptes d'usuari amb la comanda `chntpw`:
 
         sudo apt update
         sudo apt install dislocker chntpw
