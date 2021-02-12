@@ -14,6 +14,8 @@ Aquests ordinadors arriben al meu centre el 14/12/2020 amb:
 
   * Autenticació per xarxa amb usuari *nom_xtec*@edu.gencat.cat i la contrasenya de l'ATRI.
 
+  * [Microsoft Intune](https://docs.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune) que pot bloquejar Windows si fem canvis que no dessitja ("jailbreak").
+
 Què volem fer amb els alumnes? Pràctiques de recerca d'informació a ASIX-M11-SI-UF1 sobre forense amb un cas similar, podent fer alguna prova o comprovació sobre el cas real, que serà el portàtil que m'assignin.
 
   * Trobar la contrasenya de la BIOS/UEFI
