@@ -71,7 +71,7 @@ Sistema operatiu: sembla que és un Windows 10 Pro Education:
 
     Solució: Finalment la contrasenya és de 12 caràcters (-ja és coneguda i fins on jo sé ja està circulant per la xarxa, perquè a algun centre els tècnics que venien a repartir els portàtils en un moment de cansament o avorriment la van donar al professorat per que es posessin ells mateixos la contrasenya al portàtil-). No es tracta de cap contrasenya típica, tanmateix sí segueix un patró esperat: paraula seguida de un número d'entre dos i quatre xifres, i la paraula amb la clàssica substitució de vocals per dígits (a/4 , e/3 , i/1, o/0). Concretament una paraula de 8 caràcters i un número de 4 xifres. El número de quatre xifres és, com la majoria de vegades, un any.
 
- 2. Recerca sobre si el fabricant té un backdoor per quan un client oblida perd contrasenya.
+ 2. Recerca sobre si el fabricant té un backdoor per quan un client perd la contrasenya.
 
     Solució: A la web de Lenovo diuen que no.
 
@@ -160,7 +160,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  4. És possible un Atac Cold Boot (anàlisi forense de la RAM d'un equip a la recerca de contrasenyes)?
 
-    Molt senzill però espectacular!!!!  Pat agradar molt als alumnes.
+    Molt senzill però espectacular!!!!  Pot agradar molt als alumnes.
 
     <https://citp.princeton.edu/our-work/memory/code/>
 
@@ -176,7 +176,7 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
 
  5. És possible esnifar la clau del TPM?
 
-    Cal comprar hardware especialitzat, tot i que econòmic, i ser una mica manetes de l'electrònica.
+    Cal comprar hardware especialitzat, tot i que econòmic, i ser bastant manetes de l'electrònica.
 
     <https://pulsesecurity.co.nz/articles/TPM-sniffing>
 
