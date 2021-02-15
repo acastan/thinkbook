@@ -141,6 +141,8 @@ Cal tenir clar que a un determinat moment de l'inici del sistema la contrasenya 
         sudo chntpw -l SAM
         sudo chntpw -u Administrador SAM
 
+    Avís: recorda que per després loguejar-te com usuari local has d'escriure Nom_equip\Nom_usuari , per exemple EDUXXXXXX\Administrador
+
     Tanmateix en altres situacions d'anàlisi forense seria possible que no tinguem la contrasenya de BitLocker d'aquesta manera, i val la pena continuar pensant altres mètodes amb els alumnes.
 
  2. És possible un atac de força bruta i de contrasenya sobre el volum?
@@ -233,7 +235,9 @@ Conclusions que haurien de treure els alumnes:
 
     i llavors en la pantalla de login escollir la icona d'opcions especials (la icona del mig de les tres icones de baix a la dreta) i t'obre la shell. I ara ja des d'aquesta shell amagada al login pots crear un usuari i accedir amb ell:
 
-        net user nom_usuari *
+        net user nom_usuari contrasenya /ADD
+
+    Avís: recorda que per loguejar-te com usuari local has d'escriure Nom_equip\Nom_usuari
 
     Avís: si el mètode d'obrir una línia de comandes no funciona per que ens demana desprotegir el volum amb la clau de BitLocker i després un usuari administrador, podem solucionar-ho escollint "restaurar el sistema" dins el menú de recuperació, que retornarà el sistema al seu instant primigeni en que no haviem fet login per primer cop i el volum encara no s'havia protegit amb BitLocker.
 
